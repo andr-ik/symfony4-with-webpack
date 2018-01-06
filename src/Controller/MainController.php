@@ -9,6 +9,8 @@ class MainController extends Controller
 {
     public function mainAction(): Response
     {
-        return new Response("Hello, world!");
+        return $this->render('main/main.html.twig', [
+            'name' => 'world',
+        ]);
     }
 }
