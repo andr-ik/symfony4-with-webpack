@@ -1,8 +1,0 @@
-parameters:
-  assets:
-    index:
-      js: /assets/js/index.js?v=7759c0e3585f52536824
-    contact:
-      js: /assets/js/contact.js?v=7759c0e3585f52536824
-    common:
-      js: /assets/js/common.js?v=7759c0e3585f52536824
