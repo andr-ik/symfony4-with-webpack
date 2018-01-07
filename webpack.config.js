@@ -29,17 +29,29 @@ module.exports = {
             test: /\.scss/,
             use: ExtractTextPlugin.extract({
                 fallback: "style-loader",
-                use: ['css-loader', 'autoprefixer-loader', 'sass-loader'],
+                use: [{
+                    loader: 'css-loader',
+                    options: {
+                        sourceMap: isDev
+                    }
+                }, {
+                    loader: 'autoprefixer-loader',
+                }, {
+                    loader: "sass-loader",
+                    options: {
+                        sourceMap: isDev
+                    }
+                }],
             })
         }, {
             test: /\.js/,
             exclude: /node_modules/,
-            use: {
+            use: [{
                 loader: 'babel-loader',
                 options: {
                     presets: ['babel-preset-env']
                 }
-            }
+            }]
         }, {
             test: /\.(png|jpg|svg|ttf|eot|woff|woff2)/,
             loader: 'file-loader?name=[path][name].[ext]'
