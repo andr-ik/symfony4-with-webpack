@@ -4,8 +4,9 @@ require('dotenv').config();
 const env = process.env.APP_ENV || 'prod';
 const isDev = env !== 'prod';
 
-const fs = require('fs');
 const webpack = require('webpack');
+const yaml = require('js-yaml');
+const AssetsPlugin = require('assets-webpack-plugin');
 
 module.exports = {
     context: __dirname + '/assets/js',
@@ -17,7 +18,7 @@ module.exports = {
     output: {
         path: __dirname + '/public/assets/js/',
         publicPath: "/assets/js/",
-        filename: '[name].js?v=[contenthash]',
+        filename: '[name].js?v=[hash]',
         //library: "[name]"
     },
     watch: isDev,
@@ -42,15 +43,17 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             name: "common"
         }),
-        {
-            apply: function (compiler) {
-                compiler.plugin('done', function (stats) {
-                    fs.writeFileSync('./config/version.json', JSON.stringify({
-                        version: stats.hash
-                    }));
+        new AssetsPlugin({
+            filename: 'assets.yaml',
+            path: __dirname + '/config/',
+            processOutput: (assets) => {
+                return yaml.dump({
+                    parameters: {
+                        assets: assets
+                    }
                 });
             }
-        }
+        })
     ],
     devServer: {
         contentBase: __dirname + '/public/',

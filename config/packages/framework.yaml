@@ -7,8 +7,5 @@ framework:
     #fragments: ~
     session:
         handler_id: ~
-    assets:
-      version: '%assets.version%'
-      version_format: '%%s?v=%%s'
     php_errors:
         log: true

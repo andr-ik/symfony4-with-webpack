@@ -4,4 +4,4 @@
 /vendor/
 /node_modules/
 /public/assets/
-/config/version.json
+/config/assets.yaml
