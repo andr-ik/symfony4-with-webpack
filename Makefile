@@ -11,4 +11,4 @@ _pow:
 	echo "http://192.168.99.100:80" > ~/.pow/demo
 	echo "http://192.168.99.100:8025" > ~/.pow/mail
 _assets:
-	./node_modules/.bin/webpack
+	./node_modules/.bin/webpack-dev-server

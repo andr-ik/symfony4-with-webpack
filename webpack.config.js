@@ -16,8 +16,8 @@ module.exports = {
     },
     output: {
         path: __dirname + '/public/assets/js/',
-        publicPath: "/assets/",
-        filename: '[name].js',
+        publicPath: "/assets/js/",
+        filename: '[name].js?v=[contenthash]',
         //library: "[name]"
     },
     watch: isDev,
@@ -38,6 +38,7 @@ module.exports = {
         }]
     },
     plugins: [
+        new webpack.HotModuleReplacementPlugin(),
         new webpack.optimize.CommonsChunkPlugin({
             name: "common"
         }),
@@ -50,7 +51,17 @@ module.exports = {
                 });
             }
         }
-    ]
+    ],
+    devServer: {
+        contentBase: __dirname + '/public/',
+        compress: true,
+        port: 9000,
+        hot: true,
+        inline: true,
+        proxy: {
+            "*": "http://192.168.99.100:80"
+        }
+    }
 };
 
 if (!isDev) {
