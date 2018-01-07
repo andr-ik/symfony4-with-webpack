@@ -1,3 +1,5 @@
+import '../scss/index.scss'
+
 let $ = require('jquery');
 
 setTimeout(function () {

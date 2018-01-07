@@ -7,24 +7,31 @@ const isDev = env !== 'prod';
 const webpack = require('webpack');
 const yaml = require('js-yaml');
 const AssetsPlugin = require('assets-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-    context: __dirname + '/assets/js',
+    context: __dirname + '/assets',
     entry: {
-        common: './common',
-        index: './index',
-        contact: './contact'
+        common: './js/common.js',
+        index: './js/index.js',
+        contact: './js/contact.js'
     },
     output: {
-        path: __dirname + '/public/assets/js/',
-        publicPath: "/assets/js/",
-        filename: '[name].js?v=[hash]',
-        //library: "[name]"
+        path: __dirname + '/public/assets/',
+        publicPath: '/assets/',
+        filename: 'js/[name].js?v=[hash]',
+        //library: '[name]'
     },
     watch: isDev,
     devtool: isDev ? 'source-map' : false,
     module: {
         loaders: [{
+            test: /\.scss/,
+            use: ExtractTextPlugin.extract({
+                fallback: "style-loader",
+                use: ['css-loader', 'autoprefixer-loader', 'sass-loader'],
+            })
+        }, {
             test: /\.js/,
             exclude: /node_modules/,
             use: {
@@ -35,11 +42,15 @@ module.exports = {
             }
         }, {
             test: /\.(png|jpg|svg|ttf|eot|woff|woff2)/,
-            loader: 'file?name=[path][name].[ext]'
+            loader: 'file-loader?name=[path][name].[ext]'
         }]
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
+        new ExtractTextPlugin({
+            filename: "css/[name].css?v=[hash]",
+            allChunks: true
+        }),
         new webpack.optimize.CommonsChunkPlugin({
             name: "common"
         }),
@@ -53,7 +64,7 @@ module.exports = {
                     }
                 });
             }
-        })
+        }),
     ],
     devServer: {
         contentBase: __dirname + '/public/',

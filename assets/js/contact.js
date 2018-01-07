@@ -1,3 +1,5 @@
+import '../scss/contact.scss'
+
 let $ = require('jquery');
 
 setTimeout(function () {

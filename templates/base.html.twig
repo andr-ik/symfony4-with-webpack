@@ -6,6 +6,10 @@
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+        <ul>
+            <li><a href="{{ path('index') }}">index</a></li>
+            <li><a href="{{ path('contact') }}">contact</a></li>
+        </ul>
         {% block body %}{% endblock %}
 
         {{ registerJs('common') }}

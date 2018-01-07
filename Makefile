@@ -3,6 +3,7 @@ server_stop: _server_stop
 pow: _pow
 webpack: _webpack
 webpack_dev: _webpack_dev
+webpack_build: _webpack_build
 
 _server_start:
 	./bin/console server:start
@@ -15,3 +16,5 @@ _webpack:
 	./node_modules/.bin/webpack
 _webpack_dev:
 	./node_modules/.bin/webpack-dev-server
+_webpack_build:
+	APP_ENV=prod ./node_modules/.bin/webpack
