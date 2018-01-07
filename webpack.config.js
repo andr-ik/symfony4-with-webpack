@@ -26,6 +26,17 @@ module.exports = {
     devtool: isDev ? 'source-map' : false,
     module: {
         loaders: [{
+            test: /\.css/,
+            use: ExtractTextPlugin.extract({
+                fallback: "style-loader",
+                use: [{
+                    loader: 'css-loader',
+                    options: {
+                        sourceMap: isDev
+                    }
+                }],
+            })
+        }, {
             test: /\.scss/,
             use: ExtractTextPlugin.extract({
                 fallback: "style-loader",

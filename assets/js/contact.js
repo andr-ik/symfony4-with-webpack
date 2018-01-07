@@ -1,6 +1,6 @@
 import '../scss/contact.scss'
 
-let $ = require('jquery');
+import $ from 'jquery';
 
 setTimeout(function () {
     $('h1').text('Контакты');
