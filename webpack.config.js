@@ -74,7 +74,8 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ProvidePlugin({
-            jQuery: 'jquery'
+            jQuery: 'jquery',
+            Popper: 'popper.js',
         }),
         new ExtractTextPlugin({
             filename: "css/[name].css?v=[hash]",

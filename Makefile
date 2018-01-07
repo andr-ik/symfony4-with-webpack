@@ -4,6 +4,7 @@ pow: _pow
 webpack: _webpack
 webpack_dev: _webpack_dev
 webpack_build: _webpack_build
+webpack_build_profile: _webpack_build_profile
 
 _server_start:
 	./bin/console server:start
@@ -18,3 +19,6 @@ _webpack_dev:
 	./node_modules/.bin/webpack-dev-server
 _webpack_build:
 	APP_ENV=prod ./node_modules/.bin/webpack
+_webpack_build_profile:
+	# check https://webpack.github.io/analyse/
+	APP_ENV=prod ./node_modules/.bin/webpack --json --profile > profile.json
