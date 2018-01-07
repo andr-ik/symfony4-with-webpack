@@ -53,8 +53,11 @@ module.exports = {
                 }
             }]
         }, {
-            test: /\.(png|jpg|svg|ttf|eot|woff|woff2)/,
-            loader: 'file-loader?name=[path][name].[ext]'
+            test: /\.(png|jpg|jpeg|svg)/,
+            loader: 'file-loader?name=images/[hash].[ext]'
+        }, {
+            test: /\.(ttf|eot|woff|woff2)/,
+            loader: 'file-loader?name=fonts/[hash].[ext]'
         }]
     },
     plugins: [

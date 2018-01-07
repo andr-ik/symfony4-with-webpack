@@ -3,3 +3,25 @@
 h1{
     color: red;
 }
+
+.bower{
+    width: 20%;
+    height: 20%;
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    background: url(../img/bower-logo.png) center center no-repeat;
+    background-size: cover;
+}
+
+.bower2{
+    width: 20%;
+    height: 20%;
+    position: absolute;
+    top: 50%;
+    right: 20%;
+    transform: translate(-50%, -50%);
+    background: url(../img/logo/road.jpeg) center center no-repeat;
+    background-size: cover;
+}
