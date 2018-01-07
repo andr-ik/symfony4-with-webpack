@@ -1,1 +1,1 @@
-// common.js
+import './modules/bootstrap'

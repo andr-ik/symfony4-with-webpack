@@ -73,6 +73,9 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.ProvidePlugin({
+            jQuery: 'jquery'
+        }),
         new ExtractTextPlugin({
             filename: "css/[name].css?v=[hash]",
             allChunks: true

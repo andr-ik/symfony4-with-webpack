@@ -1,8 +1,7 @@
 import '../scss/index.scss'
 
 import $ from 'jquery';
-import 'select2';
-import 'select2/dist/css/select2.css';
+import './modules/select2'
 
 setTimeout(function () {
     $('h1').text('Индекс');
