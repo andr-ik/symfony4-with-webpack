@@ -8,6 +8,7 @@ const webpack = require('webpack');
 const yaml = require('js-yaml');
 const AssetsPlugin = require('assets-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     context: __dirname + '/assets',
@@ -73,6 +74,9 @@ module.exports = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
+        new CleanWebpackPlugin([
+            'public/assets'
+        ]),
         new webpack.ProvidePlugin({
             jQuery: 'jquery',
             Popper: 'popper.js',
