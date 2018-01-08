@@ -24,7 +24,7 @@ module.exports = {
         //library: '[name]'
     },
     watch: isDev,
-    devtool: isDev ? 'source-map' : false,
+    devtool: isDev ? 'cheap-source-map' : false,
     module: {
         loaders: [{
             test: /\.css/,
@@ -78,8 +78,8 @@ module.exports = {
             'public/assets'
         ]),
         new webpack.ProvidePlugin({
-            jQuery: 'jquery',
-            Popper: 'popper.js',
+            $: 'jquery',
+            jQuery: 'jquery'
         }),
         new ExtractTextPlugin({
             filename: "css/[name].css?v=[hash]",

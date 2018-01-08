@@ -1,6 +1,5 @@
 import '../scss/index.scss'
 
-import $ from 'jquery';
 import './modules/select2'
 
 setTimeout(function () {
