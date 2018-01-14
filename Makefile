@@ -1,5 +1,6 @@
 server_start: _server_start
 server_stop: _server_stop
+init: _init
 pow: _pow
 webpack: _webpack
 webpack_dev: _webpack_dev
@@ -10,6 +11,11 @@ _server_start:
 	./bin/console server:start
 _server_stop:
 	./bin/console server:stop
+_init:
+	docker-compose up -d --build
+	composer install
+	yarn install
+	$(MAKE) _pow
 _pow:
 	echo "http://192.168.99.100:80" > ~/.pow/demo
 	echo "http://192.168.99.100:8025" > ~/.pow/mail
